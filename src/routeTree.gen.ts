@@ -10,33 +10,83 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ExerciseRouteImport } from './routes/exercise'
+import { Route as FoodRouteImport } from './routes/food'
+import { Route as SleepRouteImport } from './routes/sleep'
+import { Route as WaterRouteImport } from './routes/water'
+import { Route as WeightRouteImport } from './routes/weight'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExerciseRoute = ExerciseRouteImport.update({
+  id: '/exercise',
+  path: '/exercise',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FoodRoute = FoodRouteImport.update({
+  id: '/food',
+  path: '/food',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SleepRoute = SleepRouteImport.update({
+  id: '/sleep',
+  path: '/sleep',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WaterRoute = WaterRouteImport.update({
+  id: '/water',
+  path: '/water',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WeightRoute = WeightRouteImport.update({
+  id: '/weight',
+  path: '/weight',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/exercise': typeof ExerciseRoute
+  '/food': typeof FoodRoute
+  '/sleep': typeof SleepRoute
+  '/water': typeof WaterRoute
+  '/weight': typeof WeightRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/exercise': typeof ExerciseRoute
+  '/food': typeof FoodRoute
+  '/sleep': typeof SleepRoute
+  '/water': typeof WaterRoute
+  '/weight': typeof WeightRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/exercise': typeof ExerciseRoute
+  '/food': typeof FoodRoute
+  '/sleep': typeof SleepRoute
+  '/water': typeof WaterRoute
+  '/weight': typeof WeightRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/exercise' | '/food' | '/sleep' | '/water' | '/weight'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/exercise' | '/food' | '/sleep' | '/water' | '/weight'
+  id: '__root__' | '/' | '/exercise' | '/food' | '/sleep' | '/water' | '/weight'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ExerciseRoute: typeof ExerciseRoute
+  FoodRoute: typeof FoodRoute
+  SleepRoute: typeof SleepRoute
+  WaterRoute: typeof WaterRoute
+  WeightRoute: typeof WeightRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +98,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/exercise': {
+      id: '/exercise'
+      path: '/exercise'
+      fullPath: '/exercise'
+      preLoaderRoute: typeof ExerciseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/food': {
+      id: '/food'
+      path: '/food'
+      fullPath: '/food'
+      preLoaderRoute: typeof FoodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sleep': {
+      id: '/sleep'
+      path: '/sleep'
+      fullPath: '/sleep'
+      preLoaderRoute: typeof SleepRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/water': {
+      id: '/water'
+      path: '/water'
+      fullPath: '/water'
+      preLoaderRoute: typeof WaterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/weight': {
+      id: '/weight'
+      path: '/weight'
+      fullPath: '/weight'
+      preLoaderRoute: typeof WeightRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ExerciseRoute: ExerciseRoute,
+  FoodRoute: FoodRoute,
+  SleepRoute: SleepRoute,
+  WaterRoute: WaterRoute,
+  WeightRoute: WeightRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
