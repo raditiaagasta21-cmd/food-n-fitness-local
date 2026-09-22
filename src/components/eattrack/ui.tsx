@@ -161,7 +161,7 @@ export function PageHeader({
       <div className="mx-auto grid max-w-lg grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 px-4 py-3">
         {back ? (
           <Link
-            to={back}
+            to={back as never}
             className="-ml-2 grid h-10 w-10 shrink-0 place-items-center rounded-full text-muted-foreground hover:bg-muted"
             aria-label="Back"
           >
