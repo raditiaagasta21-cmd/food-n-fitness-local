@@ -12,6 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ExerciseRouteImport } from './routes/exercise'
 import { Route as FoodRouteImport } from './routes/food'
+import { Route as HabitsRouteImport } from './routes/habits'
+import { Route as HistoryRouteImport } from './routes/history'
+import { Route as ProgressRouteImport } from './routes/progress'
 import { Route as SleepRouteImport } from './routes/sleep'
 import { Route as WaterRouteImport } from './routes/water'
 import { Route as WeightRouteImport } from './routes/weight'
@@ -29,6 +32,21 @@ const ExerciseRoute = ExerciseRouteImport.update({
 const FoodRoute = FoodRouteImport.update({
   id: '/food',
   path: '/food',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HabitsRoute = HabitsRouteImport.update({
+  id: '/habits',
+  path: '/habits',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoryRoute = HistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgressRoute = ProgressRouteImport.update({
+  id: '/progress',
+  path: '/progress',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SleepRoute = SleepRouteImport.update({
@@ -51,6 +69,9 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/exercise': typeof ExerciseRoute
   '/food': typeof FoodRoute
+  '/habits': typeof HabitsRoute
+  '/history': typeof HistoryRoute
+  '/progress': typeof ProgressRoute
   '/sleep': typeof SleepRoute
   '/water': typeof WaterRoute
   '/weight': typeof WeightRoute
@@ -59,6 +80,9 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/exercise': typeof ExerciseRoute
   '/food': typeof FoodRoute
+  '/habits': typeof HabitsRoute
+  '/history': typeof HistoryRoute
+  '/progress': typeof ProgressRoute
   '/sleep': typeof SleepRoute
   '/water': typeof WaterRoute
   '/weight': typeof WeightRoute
@@ -68,22 +92,56 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/exercise': typeof ExerciseRoute
   '/food': typeof FoodRoute
+  '/habits': typeof HabitsRoute
+  '/history': typeof HistoryRoute
+  '/progress': typeof ProgressRoute
   '/sleep': typeof SleepRoute
   '/water': typeof WaterRoute
   '/weight': typeof WeightRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/exercise' | '/food' | '/sleep' | '/water' | '/weight'
+  fullPaths:
+    | '/'
+    | '/exercise'
+    | '/food'
+    | '/habits'
+    | '/history'
+    | '/progress'
+    | '/sleep'
+    | '/water'
+    | '/weight'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/exercise' | '/food' | '/sleep' | '/water' | '/weight'
-  id: '__root__' | '/' | '/exercise' | '/food' | '/sleep' | '/water' | '/weight'
+  to:
+    | '/'
+    | '/exercise'
+    | '/food'
+    | '/habits'
+    | '/history'
+    | '/progress'
+    | '/sleep'
+    | '/water'
+    | '/weight'
+  id:
+    | '__root__'
+    | '/'
+    | '/exercise'
+    | '/food'
+    | '/habits'
+    | '/history'
+    | '/progress'
+    | '/sleep'
+    | '/water'
+    | '/weight'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ExerciseRoute: typeof ExerciseRoute
   FoodRoute: typeof FoodRoute
+  HabitsRoute: typeof HabitsRoute
+  HistoryRoute: typeof HistoryRoute
+  ProgressRoute: typeof ProgressRoute
   SleepRoute: typeof SleepRoute
   WaterRoute: typeof WaterRoute
   WeightRoute: typeof WeightRoute
@@ -110,6 +168,27 @@ declare module '@tanstack/react-router' {
       path: '/food'
       fullPath: '/food'
       preLoaderRoute: typeof FoodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/habits': {
+      id: '/habits'
+      path: '/habits'
+      fullPath: '/habits'
+      preLoaderRoute: typeof HabitsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/history': {
+      id: '/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof HistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/progress': {
+      id: '/progress'
+      path: '/progress'
+      fullPath: '/progress'
+      preLoaderRoute: typeof ProgressRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sleep': {
@@ -140,6 +219,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ExerciseRoute: ExerciseRoute,
   FoodRoute: FoodRoute,
+  HabitsRoute: HabitsRoute,
+  HistoryRoute: HistoryRoute,
+  ProgressRoute: ProgressRoute,
   SleepRoute: SleepRoute,
   WaterRoute: WaterRoute,
   WeightRoute: WeightRoute,
