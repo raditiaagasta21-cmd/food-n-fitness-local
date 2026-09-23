@@ -12,9 +12,16 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ExerciseRouteImport } from './routes/exercise'
 import { Route as FoodRouteImport } from './routes/food'
+import { Route as HabitsRouteImport } from './routes/habits'
+import { Route as HistoryRouteImport } from './routes/history'
+import { Route as ProgressRouteImport } from './routes/progress'
 import { Route as SleepRouteImport } from './routes/sleep'
 import { Route as WaterRouteImport } from './routes/water'
 import { Route as WeightRouteImport } from './routes/weight'
+import { Route as MoreIndexRouteImport } from './routes/more.index'
+import { Route as MoreGoalsRouteImport } from './routes/more.goals'
+import { Route as MoreMealsRouteImport } from './routes/more.meals'
+import { Route as MoreProfileRouteImport } from './routes/more.profile'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -29,6 +36,21 @@ const ExerciseRoute = ExerciseRouteImport.update({
 const FoodRoute = FoodRouteImport.update({
   id: '/food',
   path: '/food',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HabitsRoute = HabitsRouteImport.update({
+  id: '/habits',
+  path: '/habits',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoryRoute = HistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgressRoute = ProgressRouteImport.update({
+  id: '/progress',
+  path: '/progress',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SleepRoute = SleepRouteImport.update({
@@ -46,47 +68,135 @@ const WeightRoute = WeightRouteImport.update({
   path: '/weight',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MoreIndexRoute = MoreIndexRouteImport.update({
+  id: '/more/',
+  path: '/more/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MoreGoalsRoute = MoreGoalsRouteImport.update({
+  id: '/more/goals',
+  path: '/more/goals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MoreMealsRoute = MoreMealsRouteImport.update({
+  id: '/more/meals',
+  path: '/more/meals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MoreProfileRoute = MoreProfileRouteImport.update({
+  id: '/more/profile',
+  path: '/more/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/exercise': typeof ExerciseRoute
   '/food': typeof FoodRoute
+  '/habits': typeof HabitsRoute
+  '/history': typeof HistoryRoute
+  '/progress': typeof ProgressRoute
   '/sleep': typeof SleepRoute
   '/water': typeof WaterRoute
   '/weight': typeof WeightRoute
+  '/more/goals': typeof MoreGoalsRoute
+  '/more/meals': typeof MoreMealsRoute
+  '/more/profile': typeof MoreProfileRoute
+  '/more/': typeof MoreIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/exercise': typeof ExerciseRoute
   '/food': typeof FoodRoute
+  '/habits': typeof HabitsRoute
+  '/history': typeof HistoryRoute
+  '/progress': typeof ProgressRoute
   '/sleep': typeof SleepRoute
   '/water': typeof WaterRoute
   '/weight': typeof WeightRoute
+  '/more/goals': typeof MoreGoalsRoute
+  '/more/meals': typeof MoreMealsRoute
+  '/more/profile': typeof MoreProfileRoute
+  '/more': typeof MoreIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/exercise': typeof ExerciseRoute
   '/food': typeof FoodRoute
+  '/habits': typeof HabitsRoute
+  '/history': typeof HistoryRoute
+  '/progress': typeof ProgressRoute
   '/sleep': typeof SleepRoute
   '/water': typeof WaterRoute
   '/weight': typeof WeightRoute
+  '/more/goals': typeof MoreGoalsRoute
+  '/more/meals': typeof MoreMealsRoute
+  '/more/profile': typeof MoreProfileRoute
+  '/more/': typeof MoreIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/exercise' | '/food' | '/sleep' | '/water' | '/weight'
+  fullPaths:
+    | '/'
+    | '/exercise'
+    | '/food'
+    | '/habits'
+    | '/history'
+    | '/progress'
+    | '/sleep'
+    | '/water'
+    | '/weight'
+    | '/more/goals'
+    | '/more/meals'
+    | '/more/profile'
+    | '/more/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/exercise' | '/food' | '/sleep' | '/water' | '/weight'
-  id: '__root__' | '/' | '/exercise' | '/food' | '/sleep' | '/water' | '/weight'
+  to:
+    | '/'
+    | '/exercise'
+    | '/food'
+    | '/habits'
+    | '/history'
+    | '/progress'
+    | '/sleep'
+    | '/water'
+    | '/weight'
+    | '/more/goals'
+    | '/more/meals'
+    | '/more/profile'
+    | '/more'
+  id:
+    | '__root__'
+    | '/'
+    | '/exercise'
+    | '/food'
+    | '/habits'
+    | '/history'
+    | '/progress'
+    | '/sleep'
+    | '/water'
+    | '/weight'
+    | '/more/goals'
+    | '/more/meals'
+    | '/more/profile'
+    | '/more/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ExerciseRoute: typeof ExerciseRoute
   FoodRoute: typeof FoodRoute
+  HabitsRoute: typeof HabitsRoute
+  HistoryRoute: typeof HistoryRoute
+  ProgressRoute: typeof ProgressRoute
   SleepRoute: typeof SleepRoute
   WaterRoute: typeof WaterRoute
   WeightRoute: typeof WeightRoute
+  MoreGoalsRoute: typeof MoreGoalsRoute
+  MoreMealsRoute: typeof MoreMealsRoute
+  MoreProfileRoute: typeof MoreProfileRoute
+  MoreIndexRoute: typeof MoreIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -112,6 +222,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FoodRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/habits': {
+      id: '/habits'
+      path: '/habits'
+      fullPath: '/habits'
+      preLoaderRoute: typeof HabitsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/history': {
+      id: '/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof HistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/progress': {
+      id: '/progress'
+      path: '/progress'
+      fullPath: '/progress'
+      preLoaderRoute: typeof ProgressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sleep': {
       id: '/sleep'
       path: '/sleep'
@@ -133,6 +264,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WeightRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/more/': {
+      id: '/more/'
+      path: '/more'
+      fullPath: '/more/'
+      preLoaderRoute: typeof MoreIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/more/goals': {
+      id: '/more/goals'
+      path: '/more/goals'
+      fullPath: '/more/goals'
+      preLoaderRoute: typeof MoreGoalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/more/meals': {
+      id: '/more/meals'
+      path: '/more/meals'
+      fullPath: '/more/meals'
+      preLoaderRoute: typeof MoreMealsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/more/profile': {
+      id: '/more/profile'
+      path: '/more/profile'
+      fullPath: '/more/profile'
+      preLoaderRoute: typeof MoreProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -140,9 +299,16 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ExerciseRoute: ExerciseRoute,
   FoodRoute: FoodRoute,
+  HabitsRoute: HabitsRoute,
+  HistoryRoute: HistoryRoute,
+  ProgressRoute: ProgressRoute,
   SleepRoute: SleepRoute,
   WaterRoute: WaterRoute,
   WeightRoute: WeightRoute,
+  MoreGoalsRoute: MoreGoalsRoute,
+  MoreMealsRoute: MoreMealsRoute,
+  MoreProfileRoute: MoreProfileRoute,
+  MoreIndexRoute: MoreIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
