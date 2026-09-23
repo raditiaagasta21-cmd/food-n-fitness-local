@@ -18,6 +18,10 @@ import { Route as ProgressRouteImport } from './routes/progress'
 import { Route as SleepRouteImport } from './routes/sleep'
 import { Route as WaterRouteImport } from './routes/water'
 import { Route as WeightRouteImport } from './routes/weight'
+import { Route as MoreIndexRouteImport } from './routes/more.index'
+import { Route as MoreGoalsRouteImport } from './routes/more.goals'
+import { Route as MoreMealsRouteImport } from './routes/more.meals'
+import { Route as MoreProfileRouteImport } from './routes/more.profile'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -64,6 +68,26 @@ const WeightRoute = WeightRouteImport.update({
   path: '/weight',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MoreIndexRoute = MoreIndexRouteImport.update({
+  id: '/more/',
+  path: '/more/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MoreGoalsRoute = MoreGoalsRouteImport.update({
+  id: '/more/goals',
+  path: '/more/goals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MoreMealsRoute = MoreMealsRouteImport.update({
+  id: '/more/meals',
+  path: '/more/meals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MoreProfileRoute = MoreProfileRouteImport.update({
+  id: '/more/profile',
+  path: '/more/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -75,6 +99,10 @@ export interface FileRoutesByFullPath {
   '/sleep': typeof SleepRoute
   '/water': typeof WaterRoute
   '/weight': typeof WeightRoute
+  '/more/goals': typeof MoreGoalsRoute
+  '/more/meals': typeof MoreMealsRoute
+  '/more/profile': typeof MoreProfileRoute
+  '/more/': typeof MoreIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -86,6 +114,10 @@ export interface FileRoutesByTo {
   '/sleep': typeof SleepRoute
   '/water': typeof WaterRoute
   '/weight': typeof WeightRoute
+  '/more/goals': typeof MoreGoalsRoute
+  '/more/meals': typeof MoreMealsRoute
+  '/more/profile': typeof MoreProfileRoute
+  '/more': typeof MoreIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -98,6 +130,10 @@ export interface FileRoutesById {
   '/sleep': typeof SleepRoute
   '/water': typeof WaterRoute
   '/weight': typeof WeightRoute
+  '/more/goals': typeof MoreGoalsRoute
+  '/more/meals': typeof MoreMealsRoute
+  '/more/profile': typeof MoreProfileRoute
+  '/more/': typeof MoreIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -111,6 +147,10 @@ export interface FileRouteTypes {
     | '/sleep'
     | '/water'
     | '/weight'
+    | '/more/goals'
+    | '/more/meals'
+    | '/more/profile'
+    | '/more/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -122,6 +162,10 @@ export interface FileRouteTypes {
     | '/sleep'
     | '/water'
     | '/weight'
+    | '/more/goals'
+    | '/more/meals'
+    | '/more/profile'
+    | '/more'
   id:
     | '__root__'
     | '/'
@@ -133,6 +177,10 @@ export interface FileRouteTypes {
     | '/sleep'
     | '/water'
     | '/weight'
+    | '/more/goals'
+    | '/more/meals'
+    | '/more/profile'
+    | '/more/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -145,6 +193,10 @@ export interface RootRouteChildren {
   SleepRoute: typeof SleepRoute
   WaterRoute: typeof WaterRoute
   WeightRoute: typeof WeightRoute
+  MoreGoalsRoute: typeof MoreGoalsRoute
+  MoreMealsRoute: typeof MoreMealsRoute
+  MoreProfileRoute: typeof MoreProfileRoute
+  MoreIndexRoute: typeof MoreIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -212,6 +264,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WeightRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/more/': {
+      id: '/more/'
+      path: '/more'
+      fullPath: '/more/'
+      preLoaderRoute: typeof MoreIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/more/goals': {
+      id: '/more/goals'
+      path: '/more/goals'
+      fullPath: '/more/goals'
+      preLoaderRoute: typeof MoreGoalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/more/meals': {
+      id: '/more/meals'
+      path: '/more/meals'
+      fullPath: '/more/meals'
+      preLoaderRoute: typeof MoreMealsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/more/profile': {
+      id: '/more/profile'
+      path: '/more/profile'
+      fullPath: '/more/profile'
+      preLoaderRoute: typeof MoreProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -225,6 +305,10 @@ const rootRouteChildren: RootRouteChildren = {
   SleepRoute: SleepRoute,
   WaterRoute: WaterRoute,
   WeightRoute: WeightRoute,
+  MoreGoalsRoute: MoreGoalsRoute,
+  MoreMealsRoute: MoreMealsRoute,
+  MoreProfileRoute: MoreProfileRoute,
+  MoreIndexRoute: MoreIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
