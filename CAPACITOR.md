@@ -8,7 +8,9 @@ EatTrack keeps all data in the device's localStorage and needs no server. Capaci
    ```bash
    npm run build:android
    ```
-   (The normal `npm run build` is unchanged and still used for the published site.)
+   This works on Windows, Mac and Linux (it uses `cross-env`). The normal
+   `npm run build` is unchanged and still used for the published site — it
+   does NOT create `dist/client`, so always use `build:android` before syncing.
 3. First time only:
    ```bash
    npx cap add android
