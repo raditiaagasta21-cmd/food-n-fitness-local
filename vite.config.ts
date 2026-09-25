@@ -6,10 +6,15 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+// ANDROID=1 builds a static SPA (dist/client/index.html) for Capacitor.
+// Normal builds (published Lovable site) are unaffected.
+const android = process.env["ANDROID"] === "1";
+
 export default defineConfig({
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
+    ...(android ? { spa: { enabled: true, prerender: { outputPath: "/index.html" } } } : {}),
   },
 });
