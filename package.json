@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "build:android": "ANDROID=1 vite build",
+    "build:android": "cross-env ANDROID=1 vite build",
     "cap:sync": "npm run build:android && npx cap sync android"
   },
   "overrides": {
