@@ -58,7 +58,7 @@ export function Field({
   children,
 }: {
   label: string;
-  hint?: string;
+  hint?: string | undefined;
   children: ReactNode;
 }) {
   return (
@@ -78,7 +78,7 @@ export function ProgressBar({
 }: {
   value: number;
   max: number;
-  tone?: "primary" | "accent" | "protein" | "carbs" | "fat" | "water" | "sleep" | "move";
+  tone?: "primary" | "accent" | "protein" | "carbs" | "fat" | "water" | "sleep" | "move" | undefined;
   className?: string;
 }) {
   const pct = max > 0 ? Math.min(100, (value / max) * 100) : 0;
@@ -91,7 +91,7 @@ export function ProgressBar({
     water: "bg-water",
     sleep: "bg-sleep",
     move: "bg-move",
-  }[tone];
+  }[tone ?? "primary"];
   return (
     <div className={cn("h-2.5 w-full overflow-hidden rounded-full bg-muted", className)}>
       <div className={cn("h-full rounded-full transition-all", bg)} style={{ width: `${pct}%` }} />
@@ -152,8 +152,8 @@ export function PageHeader({
   right,
 }: {
   title: string;
-  subtitle?: string;
-  back?: string;
+  subtitle?: string | undefined;
+  back?: string | undefined;
   right?: ReactNode;
 }) {
   return (

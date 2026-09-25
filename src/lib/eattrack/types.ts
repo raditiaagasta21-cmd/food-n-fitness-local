@@ -43,8 +43,8 @@ export type ExerciseEntry = {
   id: string;
   activity: string;
   minutes: number;
-  kcal?: number;
-  notes?: string;
+  kcal?: number | undefined;
+  notes?: string | undefined;
 };
 
 export type SleepEntry = {
@@ -58,7 +58,7 @@ export type DayEntry = {
   foods: FoodEntry[];
   waterMl: number;
   weightKg?: number;
-  sleep?: SleepEntry;
+  sleep?: SleepEntry | undefined;
   exercise: ExerciseEntry[];
   habits: string[];
   notes: string;

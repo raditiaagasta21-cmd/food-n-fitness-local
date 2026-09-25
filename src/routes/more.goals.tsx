@@ -53,7 +53,7 @@ function GoalsPage() {
   };
 
   const macroKcal =
-    (Number(form.protein) || 0) * 4 + (Number(form.carbs) || 0) * 4 + (Number(form.fat) || 0) * 9;
+    (Number(form["protein"]) || 0) * 4 + (Number(form["carbs"]) || 0) * 4 + (Number(form["fat"]) || 0) * 9;
 
   return (
     <AppShell title="Goals" back="/more" nav={false}>

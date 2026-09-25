@@ -28,10 +28,10 @@ function WeightPage() {
   const history = Object.keys(data.days)
     .filter((k) => data.days[k]?.weightKg != null)
     .sort()
-    .map((k) => ({ date: k, kg: data.days[k].weightKg as number }));
+    .map((k) => ({ date: k, kg: data.days[k]?.weightKg as number }));
 
-  const current = history.length ? history[history.length - 1].kg : undefined;
-  const start = history.length ? history[0].kg : data.goals.startWeightKg;
+  const current = history.length ? history[history.length - 1]?.kg : undefined;
+  const start = history[0]?.kg ?? data.goals.startWeightKg;
   const change = current != null ? Math.round((current - start) * 10) / 10 : 0;
 
   const save = () => {

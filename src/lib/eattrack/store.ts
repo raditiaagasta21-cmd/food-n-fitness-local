@@ -22,14 +22,14 @@ export function todayKey(d: Date = new Date()) {
 }
 
 export function shiftDate(key: string, days: number) {
-  const [y, m, d] = key.split("-").map(Number);
+  const [y = 1970, m = 1, d = 1] = key.split("-").map(Number);
   const dt = new Date(y, m - 1, d);
   dt.setDate(dt.getDate() + days);
   return todayKey(dt);
 }
 
 export function formatDateLabel(key: string) {
-  const [y, m, d] = key.split("-").map(Number);
+  const [y = 1970, m = 1, d = 1] = key.split("-").map(Number);
   const dt = new Date(y, m - 1, d);
   const today = todayKey();
   if (key === today) return "Today";
@@ -336,8 +336,8 @@ export function toggleFavorite(foodId: string) {
 }
 
 export function sleepHoursBetween(bedtime: string, wake: string) {
-  const [bh, bm] = bedtime.split(":").map(Number);
-  const [wh, wm] = wake.split(":").map(Number);
+  const [bh = 0, bm = 0] = bedtime.split(":").map(Number);
+  const [wh = 0, wm = 0] = wake.split(":").map(Number);
   let mins = wh * 60 + wm - (bh * 60 + bm);
   if (mins <= 0) mins += 24 * 60;
   return Math.round((mins / 60) * 10) / 10;

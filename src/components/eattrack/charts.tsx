@@ -51,11 +51,11 @@ export function LineChartMini({
       </svg>
       <div className="flex justify-between text-[11px] text-muted-foreground">
         <span>
-          {pts[0].label} · {round(pts[0].value)}
+          {pts[0]?.label} · {round(pts[0]?.value ?? 0)}
           {unit}
         </span>
         <span>
-          {pts[pts.length - 1].label} · {round(pts[pts.length - 1].value)}
+          {pts[pts.length - 1]?.label} · {round(pts[pts.length - 1]?.value ?? 0)}
           {unit}
         </span>
       </div>
