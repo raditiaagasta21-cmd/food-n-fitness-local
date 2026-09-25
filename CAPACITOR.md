@@ -30,3 +30,6 @@ npm run cap:sync
 ## Notes
 - Data survives app restarts. Uninstalling deletes it — use More > Settings & Data > Export first.
 - No internet permission is required.
+- If the build fails with "Cannot resolve entry module ... vite.config.ts", make sure
+  you have the latest code: the project includes `vite.config.mjs`, a plain-JavaScript
+  copy of the config that Vite loads first and that works on Windows.
