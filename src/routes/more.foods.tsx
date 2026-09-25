@@ -76,7 +76,7 @@ function FoodsPage() {
         </Field>
         <div className="grid grid-cols-2 gap-3">
           {(["kcal", "protein", "carbs", "fat"] as const).map((k) => (
-            <Field key={k} label={k === "kcal" ? "Calories" : `${k[0].toUpperCase()}${k.slice(1)} (g)`}>
+            <Field key={k} label={k === "kcal" ? "Calories" : `${(k[0] ?? "").toUpperCase()}${k.slice(1)} (g)`}>
               <input
                 className="et-field"
                 inputMode="decimal"

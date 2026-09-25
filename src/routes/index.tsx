@@ -50,7 +50,7 @@ function TodayPage() {
     Object.keys(data.days)
       .filter((k) => data.days[k]?.weightKg != null && k <= date)
       .sort()
-      .map((k) => data.days[k].weightKg)
+      .map((k) => data.days[k]?.weightKg)
       .pop();
 
   const activeHabits = data.habits.filter((h) => !h.archived);

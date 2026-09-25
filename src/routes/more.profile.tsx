@@ -65,7 +65,7 @@ function ProfilePage() {
                   variant={form.sex === s ? "primary" : "outline"}
                   onClick={() => setForm({ ...form, sex: s })}
                 >
-                  {s[0].toUpperCase() + s.slice(1)}
+                  {(s[0] ?? "").toUpperCase() + s.slice(1)}
                 </Button>
               ))}
             </div>

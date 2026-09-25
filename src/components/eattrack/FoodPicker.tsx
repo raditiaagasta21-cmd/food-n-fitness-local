@@ -269,7 +269,7 @@ function QuickCustomFood({ onCreated }: { onCreated: (f: FoodItem) => void }) {
             key={k}
             className="et-field px-2 text-center"
             inputMode="decimal"
-            placeholder={k === "kcal" ? "kcal" : k[0].toUpperCase()}
+            placeholder={k === "kcal" ? "kcal" : (k[0] ?? "").toUpperCase()}
             value={form[k]}
             onChange={(e) => setForm({ ...form, [k]: e.target.value })}
           />

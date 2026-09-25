@@ -38,13 +38,14 @@ function ProgressPage() {
   const label = (k: string) => k.slice(5).replace("-", "/");
 
   const days = keys.map((k) => getDay(data, k));
-  const kcal: Point[] = keys.map((k, i) => ({ label: label(k), value: dayTotals(days[i]).kcal }));
-  const water: Point[] = keys.map((k, i) => ({ label: label(k), value: days[i].waterMl }));
-  const move: Point[] = keys.map((k, i) => ({ label: label(k), value: exerciseMinutes(days[i]) }));
-  const sleep: Point[] = keys.map((k, i) => ({ label: label(k), value: days[i].sleep?.hours ?? 0 }));
+  const dayAt = (i: number) => days[i] ?? getDay(data, "");
+  const kcal: Point[] = keys.map((k, i) => ({ label: label(k), value: dayTotals(dayAt(i)).kcal }));
+  const water: Point[] = keys.map((k, i) => ({ label: label(k), value: dayAt(i).waterMl }));
+  const move: Point[] = keys.map((k, i) => ({ label: label(k), value: exerciseMinutes(dayAt(i)) }));
+  const sleep: Point[] = keys.map((k, i) => ({ label: label(k), value: dayAt(i).sleep?.hours ?? 0 }));
   const weight: Point[] = keys.map((k, i) => ({
     label: label(k),
-    value: days[i].weightKg ?? null,
+    value: dayAt(i).weightKg ?? null,
   }));
 
   const logged = kcal.filter((p) => (p.value ?? 0) > 0);
